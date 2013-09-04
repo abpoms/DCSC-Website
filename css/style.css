@@ -141,9 +141,65 @@ nav {
     font-size: 1.5em;
     color:#605951;
     margin-bottom: 5px;
+    margin-top: 10px;
 }
 #sidebar .widget h3 {
     font-size: .9em;
+}
+
+input[type=text] {
+    background: none;
+    border: none;
+    padding: 6px;
+    font-family: "Century Gothic";
+    height: 20px;
+    width: 150px;
+    font-size: 14px;
+    color: gray;
+    float: left;
+    margin-right:7px;
+}
+input[type=submit] {
+    background-color:#61A6AB;
+    color: white;
+    font-family: 'News Cycle', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    border:none;
+    height: 35px;
+    width: 70px;
+    vertical-align: center;
+    text-align: center center;
+    padding-top: 2px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border:solid 1px white;
+}
+
+#textinputwrapper {
+    display:block;
+    float:left;
+    padding-top: 10px;
+    width:250px;
+}
+
+#textinput {
+    background: white;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border:solid 1px white;
+    padding:5px;
+    width: 240px;
+    height: 35px;
+    float:left;
+}
+
+#signup {
+    float: left;
+    display: block;
+    margin-top: 20px;
+    max-width: 90%;
+    clear: right;
 }
 
 #footer {
@@ -168,4 +224,6 @@ nav {
 #ofc{
     text-decoration: underline;
 }
+
+
 
