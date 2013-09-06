@@ -6,17 +6,19 @@ os.chdir(os.path.dirname(__file__))
 from bottle import route, default_app, view, request, post
 import bottle
 
-@route('/')
-@view('index')
-def index():
-    return dict(submit=False)
-
 
 @post('/')
 @view('index')
 def do_index():
     email = request.forms.get('email')
     return dict(submit=True, email=email)
+
+
+@route('/')
+@view('index')
+def index():
+    return dict(submit=False, email="")
+
 
 # Do NOT use bottle.run() with mod_wsgi
 application = default_app()
