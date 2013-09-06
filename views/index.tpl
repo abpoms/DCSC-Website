@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title>UC Davis Computer Science Club</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="css/media-queries.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link href="static/css/media-queries.css" rel="stylesheet" type="text/css">
 	<link href='http://fonts.googleapis.com/css?family=News+Cycle:400,700|Roboto:900,100,100italic,300' rel='stylesheet' type='text/css'>	
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -22,7 +22,7 @@
 		<header id="header">
 
 			<hgroup>
-				<img src="images/header.png" />
+				<img src="static/images/header.png" />
 			</hgroup>
 
 			<nav>
@@ -59,7 +59,7 @@
 			</section>
 
 			<section class="widget">
-				<img src="images/signup.png" id="signup"/>
+				<img src="static/images/signup.png" id="signup"/>
 				<div id="textinputwrapper">
 	    			<form action="">
 	    			<div id="textinput">
@@ -68,7 +68,7 @@
 	    			</div>
 	    			</form>
     			</div>
-                %if submit == True
+                %if submit == True:
                 <h3 class="submit_notify"> Submission succesful! {{email}}</h3>
                 %end
 			</section>

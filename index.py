@@ -4,7 +4,7 @@ os.chdir(os.path.dirname(__file__))
 
 # ... build or import your bottle application here ...
 from bottle import route, default_app, view, request, post
-
+import bottle
 
 @route('/')
 @view('index')
