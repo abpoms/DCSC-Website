@@ -61,9 +61,9 @@
 			<section class="widget">
 				<img src="static/images/signup.png" id="signup"/>
 				<div id="textinputwrapper">
-	    			<form action="">
+	    			<form action="/" method="post">
 	    			<div id="textinput">
-	    				<input type="text" />
+	    				<input type="text" name="email" />
 	    				<input type="submit" value="SUBMIT"/>
 	    			</div>
 	    			</form>
