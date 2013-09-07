@@ -69,7 +69,7 @@
 	    			</form>
     			</div>
                 %if submit == True:
-                <h3 class="submit_notify"> Submission succesful! {{email}}</h3>
+                <h3 class="submit_notify"> Submission succesful! </h3>
                 %end
 			</section>
 							
