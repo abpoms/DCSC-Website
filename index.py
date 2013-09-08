@@ -2,6 +2,9 @@
 import os
 os.chdir(os.path.dirname(__file__))
 
+activate_this = os.path.join('.env', 'bin', 'activate_this.py')
+execfile(activate_this, dict(__file__=activate_this))
+
 # ... build or import your bottle application here ...
 import bottle
 import bottle_pgsql
