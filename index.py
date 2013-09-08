@@ -31,14 +31,17 @@ def do_index(db):
     try:
         db.execute("INSERT INTO signup_emails VALUES (%s)", [email])
     except psycopg2.IntegrityError, e:
-        return bottle.template('index', submit=False)
+        return bottle.template(
+            'index',
+            submit=False,
+            error_msg="Email already signed up.")
     except psycopg2.DatabaseError, e:
         return bottle.template(
             'index',
             submit=False,
             error_msg='Can not add email right now, try again later.')
 
-    return bottle.template('index', submit=True)
+    return bottle.template('index', submit=True, error_msg=None)
 
 
 @route('/')

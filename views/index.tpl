@@ -70,6 +70,8 @@
     			</div>
                 %if submit == True:
                 <h3 class="submit_notify"> Submission succesful! </h3>
+                %elif error_msg is not None:
+                <h3 class="error"> {{error_msg}} </h3>
                 %end
 			</section>
 							
