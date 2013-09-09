@@ -47,7 +47,7 @@ def do_index(db):
 @route('/')
 @view('index')
 def index():
-    return dict(submit=False)
+    return dict(submit=False, error_msg=None)
 
 # Do NOT use bottle.run() with mod_wsgi
 application = default_app()
