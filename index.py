@@ -1,6 +1,6 @@
 # Change working directory so relative paths (and template lookup) work again
 import os
-os.chdir(os.path.dirname(__file__))
+#os.chdir(os.path.dirname(__file__))
 
 activate_this = os.path.join('.env', 'bin', 'activate_this.py')
 execfile(activate_this, dict(__file__=activate_this))
@@ -11,7 +11,7 @@ import bottle_pgsql
 import formencode
 import psycopg2
 from formencode import validators
-from bottle import route, default_app, view, request, post
+from bottle import route, default_app, view, request, post, static_file
 
 
 plugin = bottle_pgsql.Plugin('dbname=web_user user=officer password=')
@@ -23,6 +23,11 @@ def do_index(db):
     email = request.forms.get('email')
     #TODO: error handling for db call
     email_validator = validators.Email()
+    if len(email_validator) == 0:
+        return bottle.template(
+            'index',
+            submit=False,
+            error_msg='Please enter an email.')
     try:
         email = email_validator.to_python(email)
     except formencode.Invalid, e:
@@ -48,6 +53,11 @@ def do_index(db):
 @view('index')
 def index():
     return dict(submit=False, error_msg=None)
+
+# for local debugging
+#@route('/static/<filepath:path>')
+#def server_static(filepath):
+#    return static_file(filepath, root='static')
 
 # Do NOT use bottle.run() with mod_wsgi
 application = default_app()
