@@ -41,10 +41,10 @@
   </head>
 
   <body>
-
+    <div class="container">
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
-        <div class="container-fluid">
+        <div class="container">
           <a class="brand" href="#">Davis CS Club</a>
           <div class="nav-collapse collapse">
             
@@ -219,6 +219,6 @@
       });
       </script>
 
-  
+  </div>
   </body>
 </html>
