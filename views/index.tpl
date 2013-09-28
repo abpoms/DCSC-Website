@@ -36,7 +36,7 @@
   </style>
   <link href="static/css/bootstrap-responsive.css" rel="stylesheet">
   <link href="static/webfonts/fonts.css" rel="stylesheet">
-  <link href="style.css" rel="stylesheet">
+  <link href="static/css/style.css" rel="stylesheet">
 
   </head>
 
@@ -131,7 +131,7 @@
               <img src="static/images/features/meeting.png" />
               <h2>Professional Development</h2>
               <p>Chair: Kevin Liu <br />
-                 This group will help prepare everyone for "the real world." They focus on giving resume tips, finding ways to connect us with the industry and advice on what being professional really means.
+                 This committee helps club members develop a professional network. We help you build your resume, host community coding events, discover interships, and bring about other opportunities.
               </p>
               <!--<p><a class="btn" href="#">More &raquo;</a></p>-->
             </div><!--/span-->
