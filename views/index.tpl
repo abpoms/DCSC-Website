@@ -90,12 +90,12 @@
           <div id="head-carousel-001" class="carousel slide"><!-- class of slide for animation -->
             <div class="carousel-inner">
               <div class="item active"><!-- class of active since it's the first item -->
-                <img src="static/images/carousel/welcome-carousel.png" alt="" />
+                <img src="static/images/carousel/tba-carousel.png" alt="" />
                 <div class="carousel-caption">
-                  <p class="carousel-title">Join us for our New Student Welcome Event!</p>
-                  <p>Sept 30, 2013 at 5:30pm - 6:30pm, TCS Building Room 107 
-                    <a href="http://campusmap.ucdavis.edu/?b=21">(click here for map)</a>
-                  </p>
+                  <p class="carousel-title">Didn't get enough? Come
+                  hang out!</p>
+                  <p>October 8, 2013 at 6pm - 10pm, TENTATIVE Kemper
+                  Lobby</p>
                 </div>
               </div>
               <div class="item">
