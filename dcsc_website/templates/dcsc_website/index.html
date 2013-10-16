@@ -166,14 +166,13 @@
                 <input type="text" name="name" placeholder="Name" /> <br />
                 <input type="text" name="email" placeholder="UC Davis e-mail" /> 
                 <br />
+                <input type="submit" value="Submit" />
                 %if error_msg is not None:
                 <h3>{{error_msg}}</h3>
                 %elif submit is True:
                 <h3>Woo hoo, you are now registered! Look out for
                 newsletters ahead!</h3>
-                %else:
-                <input type="submit" value="Submit" />
-                %end 
+                %end
                 <!-- 
 
                 replace above button with this button for a success notification:
