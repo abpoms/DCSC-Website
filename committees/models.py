@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Committee(models.Model):
+    name = models.CharField(max_length=150)
     chair = models.ForeignKey(
         User,
         related_name='committee_chair_set',
