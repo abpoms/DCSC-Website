@@ -30,6 +30,7 @@ class Event(models.Model):
     start = models.DateTimeField(_("start"))
     end = models.DateTimeField(_("end"),help_text=_("The end time must be later than the start time."))
     title = models.CharField(_("title"), max_length = 255)
+    location = models.CharField(_("location"), max_length = 255, blank = True)
     description = models.TextField(_("description"), null = True, blank = True)
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, verbose_name=_("creator"), related_name='creator')
     created_on = models.DateTimeField(_("created on"), default = timezone.now)
@@ -45,8 +46,9 @@ class Event(models.Model):
 
     def __unicode__(self):
         date_format = u'%s' % ugettext("DATE_FORMAT")
-        return ugettext('%(title)s: %(start)s - %(end)s') % {
+        return ugettext('%(title)s, %(location)s: %(start)s - %(end)s') % {
             'title': self.title,
+            'location': self.location,
             'start': date(self.start, date_format),
             'end': date(self.end, date_format),
         }

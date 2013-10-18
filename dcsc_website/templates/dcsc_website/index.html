@@ -69,17 +69,16 @@
               <p class="lead">hello! we are aggies who love technology, beautiful code, and good design.</p>
               
               <li class="nav-header">Upcoming Events</li>
+              {% for event in upcoming_events %}
               <li>
                 <img src="static/images/events/cat.jpg" /> 
-                <span class="eventtitle"> Welcome Freshmen & Transfers! </span>
-                <p> Sept 30, 2013 (Mon) <br /> 5:30pm - 6:30pm <br /> TCS Building Room 107 <br />
-                  <a href="http://campusmap.ucdavis.edu/?b=21">(click here for map)</a>
+                <a href=>
+                   <span class="eventtitle"> {{ event.title }} </span>
+                </a>
+                <p> {{ event.start }} <br/>
+                {{ event.location }} </p> 
               </li>
-              <li>
-                <img src="static/images/events/pragmatic.jpg" /> 
-                <span class="eventtitle"> Pragmatic Programming Committee - First Meeting</span>
-                <p> Oct 10, 2013 (Thurs) <br /> 3:00pm - 4:00pm <br /> TBA
-              </li>
+              {% endfor %}
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
@@ -89,29 +88,15 @@
                 http://twitter.github.com/bootstrap/javascript.html#carousel -->
           <div id="head-carousel-001" class="carousel slide"><!-- class of slide for animation -->
             <div class="carousel-inner">
-              <div class="item active"><!-- class of active since it's the first item -->
-                <img src="static/images/carousel/tba-carousel.png" alt="" />
+              {% for entry in carousel %}
+              <div class="item {% if forloop.first %} active {% endif %}">
+                <img src={{ entry.banner.url }} />
                 <div class="carousel-caption">
-                  <p class="carousel-title">Didn't get enough? Come
-                  hang out!</p>
-                  <p>October 8, 2013 at 6pm - 10pm, TENTATIVE Kemper
-                  Lobby</p>
+                  <p class="carousel-title"> {{ entry.title }}</p>
+                  <p> {{ entry.subtitle}} </p>
                 </div>
               </div>
-              <div class="item">
-                <img src="static/images/carousel/meeting.png" alt="" />
-                <div class="carousel-caption">
-                  <p class="carousel-title">Learn, play, and get to know everyone.</p>
-                  <p>Look out for our next events!</p>
-                </div>
-              </div>
-              <div class="item">
-                <img src="static/images/carousel/welikepizza.png" alt="" />
-                <div class="carousel-caption">
-                  <p class="carousel-title">We like pizza! Do you?</p>
-                  <p>We almost always have food in our events. :D</p>
-                </div>
-              </div>
+              {% endfor %}
             </div><!-- /.carousel-inner -->
             <!--  Next and Previous controls below
                   href values must reference the id for this carousel -->

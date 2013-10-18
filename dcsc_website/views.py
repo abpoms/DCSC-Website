@@ -6,15 +6,15 @@ from django.core.exceptions import ValidationError
 from django.shortcuts import render
 from django.contrib import messages
 
-from dcsc_website.models import NewsletterEmails
+from dcsc_website.models import NewsletterEmail, Carousel
+from schedule.models.events import Event
 
 
 def index(request):
-    context = {}
     if request.method == 'POST':
         try:
             email = forms.EmailField().clean(request.POST['email'])
-            news_email = NewsletterEmails(email=email)
+            news_email = NewsletterEmail(email=email)
             news_email.save()
         except KeyError:
             messages.error(request, 'Uh oh')
@@ -27,6 +27,9 @@ def index(request):
                 request,
                 'Woo ho, your email was submitted succesfully!')
             return HttpResponseRedirect(reverse('index'))
-        return render(request, 'dcsc_website/index.html', {})
     else:
+        context = {
+            'upcoming_events': Event.objects.order_by('start')[:3],
+            'carousel': Carousel.objects.all()
+        }
         return render(request, 'dcsc_website/index.html', context)
