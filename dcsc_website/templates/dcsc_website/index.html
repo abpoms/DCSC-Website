@@ -82,8 +82,12 @@
                    {% firstof occurence.title occurence.event.title %}
                    </span>
                 </a>
-                <p> {% firstof occurence.start occurence.event.start |
-                "F j, P"%} <br/>
+                <p> {% if occurence.start %}
+                  {{ occurence.start | date:"F j, P"}}
+                  {% else %}
+                  {{ occurence.event.start | date:"F j, P"}}
+                  {% endif %}
+                  <br/>
                 Location: {% firstof occurence.location occurence.event.location %} </p> 
               </li>
               {% endfor %}
