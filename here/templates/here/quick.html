@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+
+    <title>Here! | Davis Computer Science Club</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="static/css/signin.css" rel="stylesheet">
+    <link href="static/css/thetime.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+    <!--Fonts-->
+    <link href="static/webfonts/fonts.css" rel="stylesheet"/>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+      
+      <form class="form-signin" action="signedin.html">
+        <img src="static/imgs/logo.jpg" id="logo"/>
+        <img src="static/imgs/title.jpg" />
+
+        <div id="thetimewrap">
+          <div id="date" class="thetime"></div>
+          <div id="hour" class="thetime"></div>
+          <div class="cln thetime">:</div>
+          <div id="min" class="thetime"></div>
+          <div class="cln thetime">:</div>
+          <div id="secwrap" class="thetime">
+            <div id="sec" class="thetime"></div>
+          </div>
+          <div id="ampm" class="thetime"></div>
+        </div>
+
+        <h3 class="form-signin-heading">No events right now.</h3>
+        
+        <h3 class="form-signin-heading">Sign up to get notified:</h3>
+        <input type="text" class="form-control" placeholder="UCD Email Name (e.g. abpoms)">
+        
+        <button class="btn btn-lg btn-primary btn-block filled" type="submit">Sign up for newsletter</button>
+      </form>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script>
+      function showTime() {
+        var am = true;
+        Date.prototype.today = function(){ 
+          return ((this.getDate() < 10)?"0":"") + this.getDate() +"/"+(((this.getMonth()+1) < 10)?"0":"") + (this.getMonth()+1) +"/"+ this.getFullYear() 
+        };
+        //For the time now
+        Date.prototype.hourNow = function(){
+          var thehour = (((this.getHours() < 10)?"0":"") + this.getHours());
+          (thehour < 12) ? am=true: am=false;
+          return thehour % 12; //return the time in 12-hour format
+        };
+        Date.prototype.minNow = function(){
+          return ((this.getMinutes() < 10)?"0":"") + this.getMinutes();
+        };
+        Date.prototype.secNow = function(){
+          return ((this.getSeconds() < 10)?"0":"") + this.getSeconds();
+        };
+        var newDate = new Date();
+        document.getElementById('hour').textContent = newDate.hourNow();
+        document.getElementById('min').textContent = newDate.minNow();
+        document.getElementById('sec').textContent = newDate.secNow();
+        document.getElementById('date').textContent = newDate.today();
+        document.getElementById('ampm').textContent = (am ? "AM" : "PM");
+        setTimeout(showTime, 1000);
+      }
+      showTime();
+    </script>
+
+  </body>
+</html>
