@@ -69,14 +69,21 @@
               <p class="lead">hello! we are aggies who love technology, beautiful code, and good design.</p>
               
               <li class="nav-header">Upcoming Events</li>
-              {% for event in upcoming_events %}
+              {% for occurence in upcoming_occurences %}
               <li>
-                <img src="static/images/events/cat.jpg" /> 
+                <img src=
+                     {% if occurence.banner %}
+                     {{ occurence.banner.url }}
+                     {% else %}
+                     {{ occurence.event.banner.url }}
+                     {% endif %}/>               
                 <a href=>
-                   <span class="eventtitle"> {{ event.title }} </span>
+                   <span class="eventtitle">
+                   {% firstof occurence.title occurence.event.title %}
+                   </span>
                 </a>
-                <p> {{ event.start }} <br/>
-                {{ event.location }} </p> 
+                <p> {% firstof occurence.start occurence.event.start %} <br/>
+                Location: {% firstof occurence.location occurence.event.location %} </p> 
               </li>
               {% endfor %}
             </ul>

@@ -24,6 +24,13 @@ DATABASES = {
     }
 }
 
+# Email
+EMAIL_HOST = 'smtp.webfaction.com'
+EMAIL_HOST_USER = 'officers'
+EMAIL_HOST_PASSWORD = 'cs1234cs'
+DEFAULT_FROM_EMAIL = 'officers@daviscsclub.org'
+SERVER_EMAIL = 'officers@daviscsclub.org'
+
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []

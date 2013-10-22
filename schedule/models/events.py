@@ -30,8 +30,9 @@ class Event(models.Model):
     start = models.DateTimeField(_("start"))
     end = models.DateTimeField(_("end"),help_text=_("The end time must be later than the start time."))
     title = models.CharField(_("title"), max_length = 255)
-    location = models.CharField(_("location"), max_length = 255, blank = True)
+    location = models.CharField(_("location"), max_length=255)
     description = models.TextField(_("description"), null = True, blank = True)
+    banner = models.ImageField(blank=True, upload_to='event_banner')
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, verbose_name=_("creator"), related_name='creator')
     created_on = models.DateTimeField(_("created on"), default = timezone.now)
     rule = models.ForeignKey(Rule, null = True, blank = True, verbose_name=_("rule"), help_text=_("Select '----' for a one time only event."))
@@ -46,9 +47,8 @@ class Event(models.Model):
 
     def __unicode__(self):
         date_format = u'%s' % ugettext("DATE_FORMAT")
-        return ugettext('%(title)s, %(location)s: %(start)s - %(end)s') % {
+        return ugettext('%(title)s: %(start)s - %(end)s') % {
             'title': self.title,
-            'location': self.location,
             'start': date(self.start, date_format),
             'end': date(self.end, date_format),
         }
@@ -329,7 +329,6 @@ class EventRelation(models.Model):
     content_object: the generic foreign key to the generic object
     distinction: a string representing a distinction of the relation, User could
     have a 'veiwer' relation and an 'owner' relation for example.
-
     DISCLAIMER: while this model is a nice out of the box feature to have, it
     may not scale well.  If you use this keep that in mindself.
     '''
@@ -355,7 +354,9 @@ class EventRelation(models.Model):
 class Occurrence(models.Model):
     event = models.ForeignKey(Event, verbose_name=_("event"))
     title = models.CharField(_("title"), max_length=255, blank=True, null=True)
+    location = models.CharField(_("location"), max_length=255, blank=True)
     description = models.TextField(_("description"), blank=True, null=True)
+    banner = models.ImageField(blank=True, upload_to='event_banner')
     start = models.DateTimeField(_("start"))
     end = models.DateTimeField(_("end"))
     cancelled = models.BooleanField(_("cancelled"), default=False)
