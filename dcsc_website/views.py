@@ -35,8 +35,8 @@ def index(request):
                 'Woo ho, your email was submitted succesfully!')
             # Add user to the mailing list
             try:
-                send_mail('invite',
-                          'invite csclub %s' % email,
+                send_mail('',
+                          'add csclub %s' % email,
                           'officer@daviscsclub.org',
                           ['sympa@ucdavis.edu'],
                           fail_silently=False)
