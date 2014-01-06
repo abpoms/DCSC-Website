@@ -1,0 +1,12 @@
+.event-list {
+	font-size: 2em;
+	vertical-align: middle;	
+}
+
+input[type="radio"] {
+	vertical-align: middle;
+}
+
+.form-signin-heading {
+	color: #990100;
+}

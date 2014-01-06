@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    {% load staticfiles %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
-
+  
     <title>Here! | Davis Computer Science Club</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="static/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="{% static 'here/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="static/css/signin.css" rel="stylesheet">
-    <link href="static/css/thetime.css" rel="stylesheet">
+    <link href="{% static 'here/css/signin.css' %}"  rel="stylesheet">
+    <link href="{% static 'here/css/thetime.css' %}" rel="stylesheet">
+
+    <!--Client Form Validation-->
+    <script type="text/javascript" src="{% static 'here/scripts/jquery-2.0.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'here/scripts/parsley.min.js' %}"></script>
+
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -22,7 +27,7 @@
       <script src="../../assets/js/respond.min.js"></script>
     <![endif]-->
     <!--Fonts-->
-    <link href="static/webfonts/fonts.css" rel="stylesheet"/>
+    <link href="{% static 'here/webfonts/fonts.css' %} " rel="stylesheet"/>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
 
   </head>
@@ -31,9 +36,9 @@
 
     <div class="container">
       
-      <form class="form-signin" action="signedin.html">
-        <img src="static/imgs/logo.jpg" id="logo"/>
-        <img src="static/imgs/title.jpg" />
+      <form class="form-signin" action="validate" method="POST" parsley-validate> {% csrf_token %}
+        <img src="{% static 'here/imgs/logo.jpg' %}" id="logo"/>
+        <img src="{% static 'here/imgs/title.jpg' %}" />
 
         <div id="thetimewrap">
           <div id="date" class="thetime"></div>
@@ -48,12 +53,34 @@
         </div>
 
         
-        <h3 class="form-signin-heading">No events right now.</h3>
+        {% if events_now %}
+          <h3 class="form-signin-heading">Happening Now:</h3>
+          <div id="error"></div>
+          {% for event in events_now %}
+           
+            <input type="radio" name="eventslist" id="event{{forloop.counter}}" value="{{event.name}}" parsley-required="true" parsley-error-container="#error" parsley-error-message="Please select an event.">
+            <label class="eventitem" for="event{{forloop.counter}}">
+              <span class="eventtitle">{{event.name}}</span><br />
+              <span class="eventdesc"> {{event.location}}</span>
+            </label>
+
+          {% endfor %}
+
+          <h3 class="form-signin-heading">Quick Check-in</h3>
+          <input type="text" class="form-control" placeholder="UCD Email (e.g. jsmith@ucdavis.edu)" name="email" 
+          parsley-regexp="[A-Za-z]@([a-z]+[\.])?ucdavis\.edu" 
+          parsley-required="true" 
+          parsley-error-message="Please enter a valid ucdavis.edu email.">
+          {% if nomatch %}
+            <ul> Sorry, that email is not valid, please try again.</ul>
+          {% endif %}
+          <button class="btn btn-lg btn-primary btn-block filled" type="submit">I'm here!</button>
+
+          {% else %}
+            <h3 class="form-signin-heading">No events right now. :(</h3>
         
-        <h3 class="form-signin-heading">Sign up to get notified:</h3>
-        <input type="text" class="form-control" placeholder="UCD Email Name (e.g. abpoms)">
-        
-        <button class="btn btn-lg btn-primary btn-block filled" type="submit">Sign up for newsletter</button>
+        {% endif %}
+
       </form>
 
     </div> <!-- /container -->

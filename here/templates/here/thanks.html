@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <title>Here! | Davis Computer Science Club</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'here/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'here/css/signin.css' %}"  rel="stylesheet">
+    <link href="{% static 'here/css/thetime.css' %} " rel="stylesheet">
+    <link href="{% static 'here/css/thanks.css' %} " rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+    <!--Fonts-->
+    <link href="{% static 'here/webfonts/fonts.css' %} " rel="stylesheet"/>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+      
+      <div class="wrap">
+        <div id="youre">you are</div>
+        <img src="{% static 'here/imgs/logo.jpg' %}" id="logo"/>
+     
+        <h3 class="thanks">Welcome to {{event}}, {{result_name}}!</h3>
+        
+      </div><!-- /wrap -->
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+
+
+  </body>
+</html>

@@ -1,0 +1,23 @@
+#thetimewrap {
+	text-align: center;
+	width: 100%;
+	max-width: 100%;
+}
+
+.thetime {
+	font-size: 3em;
+	display:inline-block;
+	color: #414042;
+}
+#date {
+  margin-right: 10px;
+}
+
+#secwrap {
+	width:10%;
+	font-size: inherit;
+}
+
+.cln {
+	margin: 0px;
+}

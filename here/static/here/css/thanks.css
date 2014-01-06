@@ -1,0 +1,27 @@
+.wrap{
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+#youre {
+	position: absolute;
+	top: 70px;
+	margin-left: 30px;
+	font-family: 'Roboto Slab';
+	background-color: #000;
+	color: white;
+	padding: 2px 10px 7px 10px;
+	font-size: 2em;
+	width: 118px;
+	
+	transform: rotate(-20deg);
+	-ms-transform: rotate(-20deg); /* IE 9 */
+	-webkit-transform: rotate(-20deg); /* Safari and Chrome */
+
+}
+.thanks {
+	font-family: 'Roboto Slab';
+	font-size: 2em;
+}
+
